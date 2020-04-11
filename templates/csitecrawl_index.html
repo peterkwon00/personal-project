@@ -1,47 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Class101 수요조사 달성 클래스 </title>
+  <head>
+    <title>Class101 수요조사 달성 클래스</title>
     <!-- CSS 파일 넣기 -->
 
     <!-- 메타 태그 -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- JQuery를 import 합니다 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- 부트스트랩 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Single+Day&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Single+Day&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- java script -->
     <script type="text/javascript">
-    
-    
+      function f1() {
+        $("#list").empty();
+      }
     </script>
 
     <!-- 스타일 -->
-    <style>
+    <style type="text/css">
+      .wrap {
+        width: 850px;
+        margin: auto;
+        text-align: center;
+      }
+      table {
+        border: 1px solid;
+        border-collapse: collapse;
+        margin: auto;
+        text-align: center;
+      }
 
-
+      td,
+      th {
+        padding: 10px;
+        border: 1px solid;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-<div class="">
-
-</div>
-
-
-
-</body>
+  <body>
+    <div class="wrap">
+        
+    <br>
+      <h1>수요조사 달성 리스트</h1>
+      <br>
+      <div><button onclick="f1()">업데이트</button></div>
+      <hr />
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <td>카테고리</td>
+              <td>크리에이터</td>
+              <td>클래스명</td>
+              <td>응원수</td>
+              <td>달성률</td>
+              <td>링크</td>
+            </tr>
+          </thead>
+          <tbody id="list">
+            <tr>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
