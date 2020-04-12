@@ -37,7 +37,6 @@ goals = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div
 links = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(3) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a')
 
 for classes in zip(category, creator, titles, likes, goals, links):
-    a = int(classes[4].text.split('%')[0])
-    if  a > 100
-    print(classes[0].text.split('・').[0], classes[1].text.split('・').[1], classes[2].text, classes[3].text, classes[4].text.split('%')[0] + '%', 'class101.net/' + classes[5].attrs['href'])
+    if  int(classes[4].text.split('%')[0])> 100 :
+        print(classes[0].text.split('・')[0], classes[1].text.split('・')[1], classes[2].text, classes[3].text, classes[4].text.split('%')[0] + '%', 'class101.net/' + classes[5].attrs['href'])
 
