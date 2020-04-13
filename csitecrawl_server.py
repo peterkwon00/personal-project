@@ -9,7 +9,7 @@ db = client.dbclass
 def home():
    return render_template('csitecrawl_index.html')
 
-@app.route('/class101', methods=['GET'])
+@app.route('/')
 def update():
     import time 
 
@@ -60,9 +60,10 @@ def update():
                 'link' : link
             }
             db.class101.insert_one(doc)
-    
-    class_list = list(db.class101)
 
+@app.route('/class101', methods=['GET'])
+def show_list():
+    class_list = list(db.class101)
     return jsonify({'result':'success', 'msg': '이 요청은 GET!', 'data':class_list})       
         
 if __name__ == '__main__':
