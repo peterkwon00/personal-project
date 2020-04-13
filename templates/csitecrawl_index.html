@@ -40,6 +40,34 @@
     <script type="text/javascript">
       function f1() {
         $("#list").empty();
+        $.ajax({
+          type: "GET",
+          url: "/class101",
+          data: {},
+          success: function (response) {
+            if (reponse["result"] == "success") {
+              let list = response["data"];
+
+              for (let i = 0; i < list.length; i++) {
+                let category = list[i]["category"];
+                let creator = list[i]["creator"];
+                let title = list[i]["title"];
+                let like = list[i]["like"];
+                let goal = list[i]["goal"];
+                let link = list[i]["link"];
+
+                $("#list").append(`<tr>
+              <td>${category}</td>
+              <td>${creator}</td>
+              <td>${title}</td>
+              <td>${like}</td>
+              <td>${goal}</td>
+              <td>${link}</td>
+            </tr>`);
+              }
+            }
+          },
+        });
       }
     </script>
 
@@ -67,10 +95,9 @@
 
   <body>
     <div class="wrap">
-        
-    <br>
+      <br />
       <h1>수요조사 달성 리스트</h1>
-      <br>
+      <br />
       <div><button onclick="f1()">업데이트</button></div>
       <hr />
       <div>
