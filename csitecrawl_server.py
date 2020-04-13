@@ -60,7 +60,7 @@ def update():
 
 @app.route('/')
 def home():
-    #update()
+    update()
     return render_template('csitecrawl_index.html')
 
 @app.route('/class101', methods=['GET'])
