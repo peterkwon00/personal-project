@@ -5,11 +5,7 @@ from pymongo import MongoClient           # pymongo를 임포트 하기(패키�
 client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
 db = client.dbclass
 
-@app.route('/')
-def home():
-   return render_template('csitecrawl_index.html')
 
-@app.route('/')
 def update():
     import time 
 
@@ -43,13 +39,14 @@ def update():
     links = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(3) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a')
 
     for classes in zip(categories, creators, titles, likes, goals, links):    
-        if  int(classes[4].text.split('%')[0])> 100 and not zip.select_one(classes[2].text) == None:
+        print(db.class101.find_one({'title':classes[2].text},{'_id':0}))
+        if  int(classes[4].text.split('%')[0])> 100 and db.class101.find_one({'title':classes[2].text},{'_id':0}) == None:# user = db.users.find_one({'name':'bobby'},{'_id':0})
             category = classes[0].text.split('・')[0]
             creator = classes[1].text.split('・')[1]
             title = classes[2].text
             like = classes[3].text
             goal = classes[4].text.split('%')[0] + '%'
-            link = 'class101.net/' + classes[5].attrs['href']
+            link = 'class101.net' + classes[5].attrs['href']
 
             doc = {
                 'category' : category,
@@ -61,10 +58,18 @@ def update():
             }
             db.class101.insert_one(doc)
 
+@app.route('/')
+def home():
+    #update()
+    return render_template('csitecrawl_index.html')
+
 @app.route('/class101', methods=['GET'])
 def show_list():
-    class_list = list(db.class101)
-    return jsonify({'result':'success', 'msg': '이 요청은 GET!', 'data':class_list})       
+   
+    import json 
+    from bson import json_util 
+    class_list = list(db.class101.find()) 
+    return json.dumps({'result':'success', 'msg': '이 요청은 GET!', 'data':class_list}, default=json_util.default)
         
 if __name__ == '__main__':
        app.run('0.0.0.0',port=5000,debug=True)

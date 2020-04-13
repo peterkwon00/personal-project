@@ -45,7 +45,8 @@
           url: "/class101",
           data: {},
           success: function (response) {
-            if (reponse["result"] == "success") {
+            response = JSON.parse(response)
+            if (response["result"] == "success") {
               let list = response["data"];
 
               for (let i = 0; i < list.length; i++) {
