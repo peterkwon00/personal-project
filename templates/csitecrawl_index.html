@@ -23,6 +23,14 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script
+      type="text/javascript"
+      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"
+    ></script>
 
     <!-- 부트스트랩 CSS -->
     <link
@@ -35,6 +43,10 @@
       href="https://fonts.googleapis.com/css?family=Single+Day&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="http://mottie.github.io/tablesorter/css/theme.default.css"
+      rel="stylesheet"
+    />
 
     <!-- java script -->
     <script type="text/javascript">
@@ -45,11 +57,13 @@
           url: "/class101",
           data: {},
           success: function (response) {
-            response = JSON.parse(response)
+            response = JSON.parse(response);
             if (response["result"] == "success") {
               let list = response["data"];
 
               for (let i = 0; i < list.length; i++) {
+                let firstdate = list[i]["firstdate"];
+                let modate = list[i]["modate"];
                 let category = list[i]["category"];
                 let creator = list[i]["creator"];
                 let title = list[i]["title"];
@@ -58,18 +72,26 @@
                 let link = list[i]["link"];
 
                 $("#list").append(`<tr>
-              <td>${category}</td>
-              <td>${creator}</td>
-              <td>${title}</td>
-              <td>${like}</td>
-              <td>${goal}</td>
-              <td>${link}</td>
-            </tr>`);
+                  <td>${firstdate}</td>
+                  <td>${modate}</td>
+                  <td>${category}</td>
+                  <td>${creator}</td>
+                  <td>${title}</td>
+                  <td>${like}</td>
+                  <td>${goal}</td>
+                  <td>${link}</td>
+                </tr>`);
               }
             }
           },
         });
       }
+
+      $(function () {
+        $("#101Table").tablesorter({
+          widgets: ["zebra"],
+        });
+      });
     </script>
 
     <!-- 스타일 -->
@@ -97,24 +119,36 @@
   <body>
     <div class="wrap">
       <br />
-      <h1>수요조사 달성 리스트</h1>
+      <img src=https://class101.net/images/class101-main-logo.svg>
+      <h3>수요조사 100% 달성 리스트</h3>
       <br />
-      <div><button onclick="f1()">업데이트</button></div>
+      <button type="button" class="btn btn-dark" onclick="f1()">
+        업데이트
+      </button>
       <hr />
       <div>
-        <table>
+        <table
+          id="101Table"
+          class="tablesorter"
+          cellpadding="0"
+          cellspacing="1"
+        >
           <thead>
             <tr>
-              <td>카테고리</td>
-              <td>크리에이터</td>
-              <td>클래스명</td>
-              <td>응원수</td>
-              <td>달성률</td>
-              <td>링크</td>
+              <th scope="col">최초 DB입력</th>
+              <th scope="col">DB 업데이트</th>
+              <th scope="col">카테고리</th>
+              <th scope="col">크리에이터</th>
+              <th scope="col">클래스명</th>
+              <th scope="col">응원수</th>
+              <th scope="col">달성률</th>
+              <th scope="col">링크</th>
             </tr>
           </thead>
           <tbody id="list">
             <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
               <td>커리어</td>
               <td>천사</td>
               <td>무자본 창업</td>

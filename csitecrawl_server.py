@@ -41,9 +41,11 @@ def update():
     for classes in zip(categories, creators, titles, likes, goals, links):    
         print(db.class101.find_one({'title':classes[2].text},{'_id':0}))
         if db.class101.find_one({'title':classes[2].text},{'_id':0}) != None:
-            db.class101.update_many({'title':classes[2].text},{'$set':{'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
+            db.class101.update_many({'title':classes[2].text},{'$set':{'modate':date(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
         
         elif  int(classes[4].text.split('%')[0])> 100 and db.class101.find_one({'title':classes[2].text},{'_id':0}) == None:# user = db.users.find_one({'name':'bobby'},{'_id':0})
+            firstdate = today()
+            modate = date()
             category = classes[0].text.split('・')[0]
             creator = classes[1].text.split('・')[1]
             title = classes[2].text
@@ -52,6 +54,8 @@ def update():
             link = 'class101.net' + classes[5].attrs['href']
 
             doc = {
+                'fisrtdate' : firstdate,
+                'modate' : modate,
                 'category' : category,
                 'creator' : creator,
                 'title' : title,
