@@ -62,8 +62,8 @@
               let list = response["data"];
 
               for (let i = 0; i < list.length; i++) {
-                let firstdate = list[i]["firstdate"];
-                let modate = list[i]["modate"];
+                let firstdate = new Date(list[i]["firstdate"]["$date"]).toISOString().split('T')[0];
+                let modate = new Date(list[i]["modate"]["$date"]).toISOString().split('T')[0];
                 let category = list[i]["category"];
                 let creator = list[i]["creator"];
                 let title = list[i]["title"];
@@ -79,7 +79,7 @@
                   <td>${title}</td>
                   <td>${like}</td>
                   <td>${goal}</td>
-                  <td>${link}</td>
+                  <td> <a href='http://${link}' target="_blank"> 링크 </a> </td>
                 </tr>`);
               }
             }
