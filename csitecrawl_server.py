@@ -19,7 +19,7 @@ def update():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     
-    browser = webdriver.Chrome('./chromedriver')
+    browser = webdriver.Chrome('./chromedriver', chrome_options=chrome_options)
     browser.get("https://class101.net/products/preview/list")
     time.sleep(5)
 
@@ -57,11 +57,10 @@ def update():
     #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a 기존
     #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-brqgnP.kmPBia 바뀐 것
 
-    print(categories, creators, titles, likes, goals, links)
-
+    browser.quit()
+    
 
     for classes in zip(categories, creators, titles, likes, goals, links):    
-        print(db.class101.find_one({'title':classes[2].text},{'_id':0}))
         if db.class101.find_one({'title':classes[2].text},{'_id':0}) != None:
             print('update')
             db.class101.update_many({'title':classes[2].text},{'$set':{'modate':datetime.today(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
