@@ -40,32 +40,21 @@ def update():
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
-    categories = soup.select('#wrapper > div > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4> div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div > div > div')
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-htoDjs.dxFxTu > div 기존
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-gPEVay.gyJXxX > div 바뀐것
-    creators = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div > div')
-    titles = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div')
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-gzVnrw.boJzmV 기존
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-jDwBTQ.gNxzfr 바뀐것 
-    likes = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div > div > div > div:nth-child(1)')
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-dnqmqq.bDsesi > div > div > div:nth-child(1) 기존
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-iRbamj.blSEcj > div > div > div:nth-child(1) 바뀐 것
-    goals = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div > div > div > div:nth-child(2)')
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-dnqmqq.bDsesi > div > div > div:nth-child(2) 기존
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-iRbamj.blSEcj > div > div > div:nth-child(2) 바뀐 것
-    links = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div ')
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a 기존
-    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-brqgnP.kmPBia 바뀐 것
+    categories = soup.select('ul > li > a > div > div:nth-child(2) > div:nth-child(1)')
+    creators = soup.select('ul > li > a > div > div:nth-child(2) > div:nth-child(1)')
+    titles = soup.select('ul > li > a > div > div:nth-child(2) > div:nth-child(2)')
+    likes = soup.select('ul > li > a > div > div:nth-child(2) > div:nth-child(3) > div > div > div:nth-child(1)')
+    goals = soup.select('ul > li > a > div > div:nth-child(2) > div:nth-child(3) > div > div > div:nth-child(2)')
+    links = soup.select('ul > li > a')
+
 
     browser.quit()
     
 
+
     for classes in zip(categories, creators, titles, likes, goals, links):    
-        if db.class101.find_one({'title':classes[2].text},{'_id':0}) != None:
-            print('update')
-            db.class101.update_many({'title':classes[2].text},{'$set':{'modate':datetime.today(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
-        
-        elif  int(classes[4].text.split('%')[0])> 100 and db.class101.find_one({'title':classes[2].text},{'_id':0}) == None:# user = db.users.find_one({'name':'bobby'},{'_id':0})
+        print(classes[0].text.split('・')[0], classes[1].text.split('・')[1], classes[2].text, classes[3].text, classes[4].text.split('%')[0], classes[5].attrs)
+        if  int(classes[4].text.split('%')[0])> 100 and db.class101.find_one({'title':classes[2].text},{'_id':0}) == None:# user = db.users.find_one({'name':'bobby'},{'_id':0})
             firstdate = datetime.today()
             modate = datetime.today()
             category = classes[0].text.split('・')[0]
@@ -86,6 +75,10 @@ def update():
                 'link' : link
             }
             db.class101.insert_one(doc)
+
+        if db.class101.find_one({'title':classes[2].text},{'_id':0}) != None:
+            print('update')
+            db.class101.update_many({'title':classes[2].text},{'$set':{'modate':datetime.today(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
 
 @app.route('/')
 def home():
