@@ -12,6 +12,13 @@ def update():
     import time 
 
     from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    
     browser = webdriver.Chrome('./chromedriver')
     browser.get("https://class101.net/products/preview/list")
     time.sleep(5)
@@ -33,12 +40,22 @@ def update():
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
-    categories = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-htoDjs.dxFxTu > div')
-    creators = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-htoDjs.dxFxTu > div')
-    titles = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-gzVnrw.boJzmV')
-    likes = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-dnqmqq.bDsesi > div > div > div:nth-child(1)')
-    goals = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-dnqmqq.bDsesi > div > div > div:nth-child(2)')
-    links = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a')
+    categories = soup.select('#wrapper > div > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4> div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div > div > div')
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-htoDjs.dxFxTu > div 기존
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-gPEVay.gyJXxX > div 바뀐것
+    creators = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div > div')
+    titles = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div')
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-gzVnrw.boJzmV 기존
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-jDwBTQ.gNxzfr 바뀐것 
+    likes = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div > div > div > div:nth-child(1)')
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-dnqmqq.bDsesi > div > div > div:nth-child(1) 기존
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-iRbamj.blSEcj > div > div > div:nth-child(1) 바뀐 것
+    goals = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div > div > div > div > div > div > div:nth-child(2)')
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a > div > div.sc-bZQynM.bOrPFB > div.sc-dnqmqq.bDsesi > div > div > div:nth-child(2) 기존
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-jAaTju.fNCBho > div.sc-iRbamj.blSEcj > div > div > div:nth-child(2) 바뀐 것
+    links = soup.select('#wrapper > div.pages__Body-sc-1xw23vo-0 > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4 > div:nth-child(4) > div > div.InfiniteProductList__StyledGridList-sc-1m8m88g-0 > ul > li > div ')
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-dymIpo.kdtjOQ.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > a 기존
+    #wrapper > div.pages__Body-sc-1xw23vo-0.dGxVjn > main > div > div > div.PreviewProductListViewController__ListContainer-cl9x62-4.eMbZwQ > div:nth-child(4) > div > div.sc-cpmLhU.dpVsHD.InfiniteProductList__StyledGridList-sc-1m8m88g-0.kTFhbd > ul > li > div > div > div.sc-brqgnP.kmPBia 바뀐 것
 
     print(categories, creators, titles, likes, goals, links)
 
