@@ -23,14 +23,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script
-      type="text/javascript"
-      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"
-    ></script>
 
     <!-- 부트스트랩 CSS -->
     <link
@@ -41,10 +33,6 @@
     />
     <link
       href="https://fonts.googleapis.com/css?family=Single+Day&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="http://mottie.github.io/tablesorter/css/theme.default.css"
       rel="stylesheet"
     />
 
@@ -62,8 +50,12 @@
               let list = response["data"];
 
               for (let i = 0; i < list.length; i++) {
-                let firstdate = new Date(list[i]["firstdate"]["$date"]).toISOString().split('T')[0];
-                let modate = new Date(list[i]["modate"]["$date"]).toISOString().split('T')[0];
+                let firstdate = new Date(list[i]["firstdate"]["$date"])
+                  .toISOString()
+                  .split("T")[0];
+                let modate = new Date(list[i]["modate"]["$date"])
+                  .toISOString()
+                  .split("T")[0];
                 let category = list[i]["category"];
                 let creator = list[i]["creator"];
                 let title = list[i]["title"];
@@ -86,32 +78,39 @@
           },
         });
       }
-
-      $(function () {
-        $("#101Table").tablesorter({
-          widgets: ["zebra"],
-        });
-      });
     </script>
 
     <!-- 스타일 -->
-    <style type="text/css">
+    <style>
       .wrap {
-        width: 850px;
+        width: 1400px;
         margin: auto;
         text-align: center;
       }
       table {
-        border: 1px solid;
-        border-collapse: collapse;
-        margin: auto;
-        text-align: center;
+        width: 100%;
+        background-color: #f1f1f2;
       }
-
-      td,
-      th {
+      table > thead > tr > th {
         padding: 10px;
-        border: 1px solid;
+        font-weight: 400;
+        color: #fff;
+        background-color: black;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      table > tbody > tr > td {
+        padding: 10px;
+        font-size: small;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      .container {
+        height: 700px;
+        overflow: auto;
+      }
+      .fixedHeader {
+        position: sticky;
+        top: 0;
       }
     </style>
   </head>
@@ -119,33 +118,120 @@
   <body>
     <div class="wrap">
       <br />
+      <!-- YN 추가 이미지랑 글이랑 나란히 놓는것 하고싶음 ㅎ-->
       <img src=https://class101.net/images/class101-main-logo.svg>
       <h3>수요조사 100% 달성 리스트</h3>
       <br />
+      <!--YN 변경-->
       <button type="button" class="btn btn-dark" onclick="f1()">
         업데이트
       </button>
       <hr />
-      <div>
-        <table
-          id="101Table"
-          class="tablesorter"
-          cellpadding="0"
-          cellspacing="1"
-        >
+      <div class="container">
+        <table>
           <thead>
             <tr>
-              <th scope="col">최초 DB입력</th>
-              <th scope="col">DB 업데이트</th>
-              <th scope="col">카테고리</th>
-              <th scope="col">크리에이터</th>
-              <th scope="col">클래스명</th>
-              <th scope="col">응원수</th>
-              <th scope="col">달성률</th>
-              <th scope="col">링크</th>
+              <th class="fixedHeader">최초 DB입력</th>
+              <th class="fixedHeader">DB 업데이트</th>
+              <th class="fixedHeader">카테고리</th>
+              <th class="fixedHeader">크리에이터</th>
+              <th class="fixedHeader">클래스명</th>
+              <th class="fixedHeader">응원수</th>
+              <th class="fixedHeader">달성률</th>
+              <th class="fixedHeader">링크</th>
             </tr>
           </thead>
           <tbody id="list">
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
+            <tr>
+              <td>2020. 04.13</td>
+              <td>2020. 04.15</td>
+              <td>커리어</td>
+              <td>천사</td>
+              <td>무자본 창업</td>
+              <td>12</td>
+              <td>100%</td>
+              <td>www.class101.net</td>
+            </tr>
             <tr>
               <td>2020. 04.13</td>
               <td>2020. 04.15</td>
