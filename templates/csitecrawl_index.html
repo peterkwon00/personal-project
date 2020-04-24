@@ -106,7 +106,7 @@
                   <td> <a href='http://${link}' target="_blank"> 링크 </a> </td>
                 </tr>`);
               }
-              $("#TableToExcel").DataTable({displayLength: 100});
+              $("#TableToExcel").DataTable({displayLength: 100}).destroy();
             }
           },
         });
