@@ -26,9 +26,24 @@
     ></script>
     <script
       type="text/javascript"
-      src="{{ url_for('static', filename='jquery.table2excel.js') }}"
+      src="{{ url_for('static', filename='FileSaver.js') }}"
     ></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='datatables.min.js') }}"></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='tableExport.js') }}"
+    ></script>
+    <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='xlsx.core.min.js') }}"
+  ></script>
+  <script
+  type="text/javascript"
+  src="{{ url_for('static', filename='html2canvas.js') }}"
+></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='datatables.min.js') }}"
+    ></script>
 
     <!-- 부트스트랩 CSS -->
     <link
@@ -49,18 +64,10 @@
     <!-- java script -->
     <script type="text/javascript">
       $(document).ready(function () {
-        $("#TableToExcel").DataTable();
+        f1();
       });
       function ReportToExcelConverter() {
-        $("#TableToExcel").table2excel({
-          exclude: ".noExl",
-          name: "Excel Document Name",
-          filename: "report" + ".xls", //확장자를 여기서 붙여줘야한다.
-          fileext: ".xls",
-          exclude_img: true,
-          exclude_links: true,
-          exclude_inputs: true,
-        });
+        $("#TableToExcel").tableExport({type:'csv'});
       }
 
       function f1() {
@@ -99,6 +106,7 @@
                   <td> <a href='http://${link}' target="_blank"> 링크 </a> </td>
                 </tr>`);
               }
+              $("#TableToExcel").DataTable({displayLength: 100});
             }
           },
         });
@@ -128,6 +136,10 @@
         font-size: small;
         text-align: center;
         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      table > thead > tr > th {
+        font-size: smaller;
+        text-align: center;
       }
       .container {
         height: 700px;
