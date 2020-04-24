@@ -10,6 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- JQuery를 import 합니다 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -23,6 +24,12 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="../scripts/jquery-1.11.0.js"></script>
+    <script
+      type="text/javascript"
+      src="../scripts/jquery.table2excel.js"
+    ></script>
+    <script type="text/javascript" src="../static/datatables.min.js"></script>
 
     <!-- 부트스트랩 CSS -->
     <link
@@ -35,9 +42,28 @@
       href="https://fonts.googleapis.com/css?family=Single+Day&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='datatables.min.css') }}"
+    />
 
     <!-- java script -->
     <script type="text/javascript">
+      $(document).ready(function () {
+        $("TableToExcel").DataTable();
+      });
+      function ReportToExcelConverter() {
+        $("#TableToExcel").table2excel({
+          exclude: ".noExl",
+          name: "Excel Document Name",
+          filename: "report" + ".xls", //확장자를 여기서 붙여줘야한다.
+          fileext: ".xls",
+          exclude_img: true,
+          exclude_links: true,
+          exclude_inputs: true,
+        });
+      }
+
       function f1() {
         $("#list").empty();
         $.ajax({
@@ -126,9 +152,16 @@
       <button type="button" class="btn btn-dark" onclick="f1()">
         업데이트
       </button>
+      <input
+        type="button"
+        class="btn btn-dark"
+        value="excel 다운"
+        style="width: 100px; height: 36px; font-weight: bold;"
+        onclick="ReportToExcelConverter()"
+      />
       <hr />
       <div class="container">
-        <table>
+        <table id="TableToExcel" class="table table-bordered">
           <thead>
             <tr>
               <th class="fixedHeader">최초 DB입력</th>
