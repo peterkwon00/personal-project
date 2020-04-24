@@ -24,12 +24,11 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="../scripts/jquery-1.11.0.js"></script>
     <script
       type="text/javascript"
-      src="../scripts/jquery.table2excel.js"
+      src="{{ url_for('static', filename='jquery.table2excel.js') }}"
     ></script>
-    <script type="text/javascript" src="../static/datatables.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='datatables.min.js') }}"></script>
 
     <!-- 부트스트랩 CSS -->
     <link
@@ -50,7 +49,7 @@
     <!-- java script -->
     <script type="text/javascript">
       $(document).ready(function () {
-        $("TableToExcel").DataTable();
+        $("#TableToExcel").DataTable();
       });
       function ReportToExcelConverter() {
         $("#TableToExcel").table2excel({
