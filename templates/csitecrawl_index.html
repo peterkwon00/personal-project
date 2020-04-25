@@ -33,13 +33,13 @@
       src="{{ url_for('static', filename='tableExport.js') }}"
     ></script>
     <script
-    type="text/javascript"
-    src="{{ url_for('static', filename='xlsx.core.min.js') }}"
-  ></script>
-  <script
-  type="text/javascript"
-  src="{{ url_for('static', filename='html2canvas.min.js') }}"
-></script>
+      type="text/javascript"
+      src="{{ url_for('static', filename='xlsx.core.min.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='html2canvas.min.js') }}"
+    ></script>
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='datatables.min.js') }}"
@@ -59,24 +59,27 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='datatables.min.css') }}"
-    /><!-- 데이터테이블 CSS -->
+    />
+    <!-- 데이터테이블 CSS -->
 
     <!-- java script -->
     <script type="text/javascript">
       $(document).ready(function () {
-        f1()
+        f1();
       });
       function f2() {
-        $("#TableAll").tableExport({type:'csv'});
+        $("#TableToExcel").tableExport({ type: "csv" });
       }
 
       function f1() {
-        $('#TableAll').DataTable().destroy();
+        // $("#TableToExcel").DataTable().destroy();
+
         $("#list").empty();
         $.ajax({
           type: "GET",
           url: "/class101",
           data: {},
+          async: false,
           success: function (response) {
             response = JSON.parse(response);
             if (response["result"] == "success") {
@@ -107,13 +110,11 @@
                   <td> <a href='http://${link}' target="_blank"> 링크 </a> </td>
                 </tr>`);
               }
-          
-              $("#TableAll").DataTable({displayLength: 100});
+              $("#TableToExcel").DataTable({ displayLength: 100 });
             }
           },
         });
       }
-
     </script>
 
     <!-- 스타일 -->
@@ -170,10 +171,11 @@
         style="width: 100px; height: 36px; font-weight: bold;"
         onclick="f2()"
       />
-      <br> 각 버튼은 한 번만 눌러주세요
+      <br />
+      각 버튼은 한 번만 눌러주세요
       <hr />
       <div class="container">
-        <table id="TableAll" class="table table-bordered">
+        <table id="#TableToExcel" class="table table-bordered">
           <thead>
             <tr>
               <th class="fixedHeader">최초 DB입력</th>

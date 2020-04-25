@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
 client = MongoClient('mongodb://peter:peter@15.165.158.112', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
-db = client.dbclass
+db = client.dbclnass
 
 
 @app.route('/')
@@ -14,7 +14,6 @@ def home():
 
 @app.route('/class101', methods=['GET'])
 def show_list():
-   
     import json 
     from bson import json_util 
     class_list = list(db.class101.find()) 
