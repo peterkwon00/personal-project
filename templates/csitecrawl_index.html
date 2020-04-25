@@ -76,11 +76,12 @@
           url: "/class101",
           data: {},
           async: false,
+          timeout: 0,
           success: function (response) {
               alert('업데이트 완료!')
+              f1();
           }
           });
-        f1();
       }
       function f1() {
         //$("#TableToExcel").DataTable().destroy();
