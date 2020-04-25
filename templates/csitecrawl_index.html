@@ -64,13 +64,13 @@
     <!-- java script -->
     <script type="text/javascript">
       $(document).ready(function () {
-        f1()
+        update()
       });
       function down() {
         $("#TableAll").tableExport({type:'csv'});
       }
 
-      function f1() {
+      function update() {
         $('#TableAll').DataTable().destroy();
         $("#list").empty();
         $.ajax({
@@ -112,10 +112,6 @@
             }
           },
         });
-      }
-
-      function update() {
-        f1()
       }
 
     </script>
@@ -164,10 +160,6 @@
       <br />
       <img src=https://class101.net/images/class101-main-logo.svg>
       <h3>수요조사 100% 달성 리스트</h3>
-      표가 나올 때까지 잠시만 기다려주세요. 
-      <br>(5-10초 소요) 
-      <br />
-      <hr>
       <button type="button" class="btn btn-dark" onclick="update()">
         업데이트
       </button>
