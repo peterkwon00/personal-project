@@ -19,5 +19,10 @@ def show_list():
     class_list = list(db.class101.find()) 
     return json.dumps({'result':'success', 'msg': '이 요청은 GET!', 'data':class_list}, default=json_util.default)
         
+@app.route('/class101', methods=['POST'])
+def update():
+    import crawl
+    crawl.update()
+
 if __name__ == '__main__':
        app.run('0.0.0.0',port=5000,debug=True)
