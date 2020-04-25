@@ -59,19 +59,19 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='datatables.min.css') }}"
-    />
+    /><!-- 데이터테이블 CSS -->
 
     <!-- java script -->
     <script type="text/javascript">
       $(document).ready(function () {
         f1()
       });
-      function ReportToExcelConverter() {
-        $("#TableToExcel").tableExport({type:'csv'});
+      function down() {
+        $("#TableAll").tableExport({type:'csv'});
       }
 
       function f1() {
-        $('#TableToExcel').DataTable().destroy();
+        $('#TableAll').DataTable().destroy();
         $("#list").empty();
         $.ajax({
           type: "GET",
@@ -108,11 +108,16 @@
                 </tr>`);
               }
           
-              $("#TableToExcel").DataTable({displayLength: 100});
+              $("#TableAll").DataTable({displayLength: 100});
             }
           },
         });
       }
+
+      function update() {
+        f1()
+      }
+
     </script>
 
     <!-- 스타일 -->
@@ -157,24 +162,26 @@
   <body>
     <div class="wrap">
       <br />
-      <!-- YN 추가 이미지랑 글이랑 나란히 놓는것 하고싶음 ㅎ-->
       <img src=https://class101.net/images/class101-main-logo.svg>
       <h3>수요조사 100% 달성 리스트</h3>
+      표가 나올 때까지 잠시만 기다려주세요. 
+      <br>(5-10초 소요) 
       <br />
-      <!--YN 변경-->
-      <button type="button" class="btn btn-dark" onclick="f1()">
+      <hr>
+      <button type="button" class="btn btn-dark" onclick="update()">
         업데이트
       </button>
       <input
         type="button"
         class="btn btn-dark"
-        value="excel 다운"
+        value="CSV 다운"
         style="width: 100px; height: 36px; font-weight: bold;"
-        onclick="ReportToExcelConverter()"
+        onclick="down()"
       />
+      <br> 각 버튼은 한 번만 눌러주세요
       <hr />
       <div class="container">
-        <table id="TableToExcel" class="table table-bordered">
+        <table id="TableAll" class="table table-bordered">
           <thead>
             <tr>
               <th class="fixedHeader">최초 DB입력</th>
