@@ -70,19 +70,7 @@
       function f2() {
         $("#TableToExcel").tableExport({ type: "csv" });
       }
-      function f3(){
-        $.ajax({
-          type: "POST",
-          url: "/class101",
-          data: {},
-          async: false,
-          timeout: 0,
-          success: function (response) {
-              alert('업데이트 완료!')
-              f1();
-          }
-          });
-      }
+      
       function f1() {
         //$("#TableToExcel").DataTable().destroy();
 
@@ -173,9 +161,6 @@
       <br />
       <img src=https://class101.net/images/class101-main-logo.svg>
       <h3>수요조사 100% 달성 리스트</h3>
-      <button type="button" class="btn btn-dark" onclick="f3()">
-        업데이트
-      </button>
       <input
         type="button"
         class="btn btn-dark"
@@ -183,8 +168,6 @@
         style="width: 100px; height: 36px; font-weight: bold;"
         onclick="f2()"
       />
-      <br />
-      각 버튼은 한 번만 눌러주세요
       <hr />
       <div class="container">
         <table id="TableToExcel" class="table table-bordered">

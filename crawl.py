@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from pymongo import MongoClient           # pymongo를 임포트 하기(패키지 인스톨 먼저 해야겠죠?)
-client = MongoClient('mongodb://peter:peter@15.165.158.112', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
+client = MongoClient('mongodb://peter:peter@54.180.94.219', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
 db = client.dbclass
 
 import schedule
@@ -80,7 +80,7 @@ def update():
             db.class101.update_many({'title':classes[2].text},{'$set':{'modate':datetime.today(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
     
 def run():
-    schedule.every().day.at('15:00').do(update) # 매일 UTC 15:00 한국시간 24:00 마다 update 함수를 실행
+    schedule.every().day.hour.do(update) # 매일 UTC 15:00 한국시간 24:00 마다 update 함수를 실행
     while True:
         schedule.run_pending()
 
