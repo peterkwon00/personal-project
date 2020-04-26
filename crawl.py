@@ -53,7 +53,7 @@ def update():
 
     for classes in zip(categories, creators, titles, likes, goals, links):    
         print(classes[0].text.split('・')[0], classes[1].text.split('・')[1], classes[2].text, classes[3].text, classes[4].text.split('%')[0], classes[5].attrs['href'])
-        if  int(classes[4].text.split('%')[0])> -1 and db.class101.find_one({'title':classes[2].text},{'_id':0}) == None:# user = db.users.find_one({'name':'bobby'},{'_id':0})
+        if  int(classes[4].text.split('%')[0])>=0 and db.class101.find_one({'title':classes[2].text},{'_id':0}) == None:# user = db.users.find_one({'name':'bobby'},{'_id':0})
             firstdate = datetime.today()
             modate = datetime.today()
             category = classes[0].text.split('・')[0]
