@@ -27,7 +27,7 @@ def update():
     while True: 
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(2)
-        
+        print('Scroll!!')
         new_height = browser.execute_script("return document.body.scrollHeight")
         if new_height == last_height:
             break
