@@ -78,4 +78,6 @@ def update():
         elif db.class101.find_one({'title':classes[2].text},{'_id':0}) != None:
             print('update')
             db.class101.update_many({'title':classes[2].text},{'$set':{'modate':datetime.today(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
-    
+
+if __name__ == "__main__":
+    update()            
