@@ -80,7 +80,7 @@ def update():
             db.class101.update_many({'title':classes[2].text},{'$set':{'modate':datetime.today(),'like':classes[3].text,'goal':classes[4].text.split('%')[0] + '%', 'link': 'class101.net' + classes[5].attrs['href']}})
     
 def run():
-    schedule.every().hour.do(update) # 매일 UTC 15:00 한국시간 24:00 마다 update 함수를 실행
+    schedule.every().hour.do(update) 
     while True:
         schedule.run_pending()
 
